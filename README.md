@@ -53,7 +53,7 @@ Application 2: ShopEase Website
 [repository]
 (https://github.com/pramodzinjade/shopEase-website-deployment.git)
 
-Infrastructure Setup
+Task 1 :Infrastructure Setup
 
 create two server jenkins master and target server
 
@@ -68,3 +68,135 @@ Target Server
 Install nginx
 Open port 80
 Ensure websites are accessible from browser
+![nginx default page](nginxPage.png)
+
+
+Task2 : Deploy Both Applications on the
+Same Server
+
+Expected url:
+http://<Target-Server-IP>/foodhub
+http://<Target-Server-IP>/shopease
+
+Expected deployment paths:
+/var/www/html/foodhub
+/var/www/html/shopease
+
+Task 3 Create Jenkins Pipeline Jobs
+Create two separate Jenkins Pipeline jobs:
+1. food-hub-pipeline
+pipeline {
+    agent any
+
+    environment {
+        SSH_CRED = 'food-hub-web'      // Jenkins SSH credential ID
+        SERVER_IP = '172.31.27.73'        // Target server IP
+        REMOTE_USER = 'ubuntu'
+        APP_DIR = '/var/www/html/food-hub'
+    }
+
+    stages {
+
+        stage('Clone Repository') {
+            steps {
+                git branch: 'main',
+                url: 'https://github.com/pramodzinjade/Food-Hub-Restaurant-website.git'
+            }
+        }
+
+        stage('Deploy Website') {
+            steps {
+                sshagent(credentials: ["${SSH_CRED}"]) {
+
+                    sh '''
+                    ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${SERVER_IP} "
+                        sudo mkdir -p ${APP_DIR}
+                    "
+
+                    scp -o StrictHostKeyChecking=no -r * \
+                    ${REMOTE_USER}@${SERVER_IP}:/tmp/static-site
+
+                    ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${SERVER_IP} "
+                        sudo rm -rf ${APP_DIR}/*
+                        sudo cp -r /tmp/static-site/* ${APP_DIR}/
+                        sudo chown -R www-data:www-data ${APP_DIR}
+                    "
+                    '''
+                }
+            }
+        }
+
+        stage('Verify Deployment') {
+            steps {
+                sh '''
+                echo "Website deployed successfully!"
+                '''
+            }
+        }
+    }
+}
+
+2. shopease-pipeline
+
+pipeline {
+    agent any
+
+    environment {
+        SSH_CRED = 'shop-ease-web'      // Jenkins SSH credential ID
+        SERVER_IP = '172.31.27.73'        // Target server IP
+        REMOTE_USER = 'ubuntu'
+        APP_DIR = '/var/www/html/shopEase'
+    }
+
+    stages {
+
+        stage('Clone Repository') {
+            steps {
+                git branch: 'main',
+                url: 'https://github.com/pramodzinjade/shopEase-website-deployment.git'
+            }
+        }
+
+        stage('Deploy Website') {
+            steps {
+                sshagent(credentials: ["${SSH_CRED}"]) {
+
+                    sh '''
+                    ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${SERVER_IP} "
+                        sudo mkdir -p ${APP_DIR}
+                    "
+
+                    scp -o StrictHostKeyChecking=no -r * \
+                    ${REMOTE_USER}@${SERVER_IP}:/tmp/static-site
+
+                    ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${SERVER_IP} "
+                        sudo rm -rf ${APP_DIR}/*
+                        sudo cp -r /tmp/static-site/* ${APP_DIR}/
+                        sudo chown -R www-data:www-data ${APP_DIR}
+                    "
+                    '''
+                }
+            }
+        }
+
+        stage('Verify Deployment') {
+            steps {
+                sh '''
+                echo "Website deployed successfully!"
+                '''
+            }
+        }
+    }
+}
+
+output :
+1. foodHub
+![foodHub](food-hub-output.png)
+2. shopease
+![shopease](shopease-output.png)
+
+Task 4 Configure Github webhooks
+Configured Github webhooks on both repositoray
+Now any push automatically triggers jenkins
+![foodhub-webhook](webhook-confuguration-foodHub.png)
+![shopease-webhook](webhook-confuguration-shopease.png)

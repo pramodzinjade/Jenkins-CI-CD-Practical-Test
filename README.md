@@ -232,7 +232,7 @@ pipeline {
 
 output :
 1. foodHub
-![foodHub](food-hub-output.png)
+![foodHub](foodHub-first.png)
 
 2. shopease
 ![shopease](shopease-output.png)

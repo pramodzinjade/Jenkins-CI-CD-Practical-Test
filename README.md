@@ -57,11 +57,12 @@ Application Repositories
 
 Application 1: FoodHub Restaurant Website
 
-[repository](https://github.com/pramodzinjade/Food-Hub-Restaurant-website.git)
+(https://github.com/pramodzinjade/Food-Hub-Restaurant-website.git)
 
 Application 2: ShopEase Website
 
-[repository](https://github.com/pramodzinjade/shopEase-website-deployment.git)
+
+(https://github.com/pramodzinjade/shopEase-website-deployment.git)
 
 Task 1 :Infrastructure Setup
 

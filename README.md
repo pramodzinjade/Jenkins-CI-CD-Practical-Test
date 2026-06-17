@@ -41,17 +41,19 @@ ans. C) Use stored SSH credentials during execution
 ans. C)the pipeline stop execution
 
 
-Jenkins CI/CD Practical Test
+<h1>Jenkins CI/CD Practical Test</h1>
 
-Project Overview
+<h2>Project Overview</h2>
 
-This project demonstrates how to automate the deployment of a static website using Jenkins CI/CD Pipeline. Whenever changes are pushed to the GitHub repository, Jenkins automatically pulls the latest code and deploys the website to the target server.
+<p>This project demonstrates how to automate the deployment of a static website using Jenkins CI/CD Pipeline. Whenever changes are pushed to the GitHub repository, Jenkins automatically pulls the latest code and deploys the website to the target server.</p>
 
-Automated CI/CD pipeline using Jenkins
-Source code management with GitHub
-Automatic deployment after code changes
-Easy and fast website updates
-Continuous Integration and Continuous Deployment
+<ul>
+<li> Automated CI/CD pipeline using Jenkins</li>
+<li>Source code management with GitHub</li>
+<li>Automatic deployment after code changes</li>
+<li>Easy and fast website updates</li>
+<li>Continuous Integration and Continuous Deployment</li>
+</ui>
 
 Application Repositories
 
@@ -64,7 +66,7 @@ Application 2: ShopEase Website
 
 (https://github.com/pramodzinjade/shopEase-website-deployment.git)
 
-Task 1 :Infrastructure Setup
+<h2>Task 1 :Infrastructure Setup</h2>
 
 create two server jenkins master and target server
 
@@ -88,15 +90,21 @@ Ensure websites are accessible from browser
 
 
 
-Task2 : Deploy Both Applications on the
-Same Server
+<h2>Task2 : Deploy Both Applications on the
+Same Server</h2>
 
 Expected url:
 http://<Target-Server-IP>/foodhub
 http://<Target-Server-IP>/shopease
 
+
+
 Expected deployment paths:
+
+
 /var/www/html/foodhub
+
+
 /var/www/html/shopease
 
 Task 3 Create Jenkins Pipeline Jobs

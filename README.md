@@ -239,7 +239,16 @@ output :
 
 Task 4 Configure Github webhooks
 Configured Github webhooks on both repositoray
+
+
+
 Now any push automatically triggers jenkins
+
+
+
 ![foodhub-webhook](webhook-confuguration-foodHub.png)
+
+
+
 
 ![shopease-webhook](webhook-confuguration-shopease.png)

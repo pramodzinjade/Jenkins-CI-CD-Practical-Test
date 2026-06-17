@@ -55,33 +55,34 @@ ans. C)the pipeline stop execution
 <li>Continuous Integration and Continuous Deployment</li>
 </ui>
 
-Application Repositories
+<h3>Application Repositories</h3>
 
-Application 1: FoodHub Restaurant Website
+<h3>Application 1: FoodHub Restaurant Website</h3>
 
 (https://github.com/pramodzinjade/Food-Hub-Restaurant-website.git)
 
-Application 2: ShopEase Website
+<h3>Application 2: ShopEase Website</h3>
 
 
 (https://github.com/pramodzinjade/shopEase-website-deployment.git)
 
 <h2>Task 1 :Infrastructure Setup</h2>
 
-create two server jenkins master and target server
+<h3>create two server jenkins master and target server</h3>
+<ui>
+<h4>Jenkins Server</h4>
+<li>install jenkins</li>
+<li>install java</li>
+<li>install required plugins</li>
+<li>Configure SSH credentials</li>
+<li>Verify Jenkins is accessible via browser</li></ui>
 
-Jenkins Server
-install jenkins
-install java
-nstall required plugins
-Configure SSH credentials
-Verify Jenkins is accessible via browser
-
-Target Server
-Install nginx
-Open port 80
-Ensure websites are accessible from browser
-
+<h4>Target Server</h4>
+<ui>
+<li>Install nginx</li>
+<li>Open port 80</li>
+<li>Ensure websites are accessible from browser</li>
+</ui>
 
 
 ![nginx default page](nginxPage.png)
@@ -107,9 +108,9 @@ Expected deployment paths:
 
 /var/www/html/shopease
 
-Task 3 Create Jenkins Pipeline Jobs
+<h2>Task 3 Create Jenkins Pipeline Jobs</h2>
 Create two separate Jenkins Pipeline jobs:
-1. food-hub-pipeline
+<h3>1. food-hub-pipeline</h3>
 
 
 
@@ -175,7 +176,7 @@ pipeline {
 
 
 
-2. shopease-pipeline
+<h3>2. shopease-pipeline</h3>
 
 
 
@@ -249,7 +250,7 @@ output :
 2. shopease
 ![shopease](shopease-output.png)
 
-Task 4 Configure Github webhooks
+<h2>Task 4 Configure Github webhooks</h2>
 Configured Github webhooks on both repositoray
 
 

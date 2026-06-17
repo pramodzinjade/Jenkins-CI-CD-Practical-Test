@@ -235,6 +235,9 @@ output :
 1. foodHub
 ![foodHub](foodHub-first.png)
 
+
+
+
 2. shopease
 ![shopease](shopease-output.png)
 
@@ -252,4 +255,21 @@ Now any push automatically triggers jenkins
 
 
 
+
+
+
+
+
+
 ![shopease-webhook](webhook-confuguration-shopease.png)
+
+
+
+FoodHub Website after modification
+
+![food-hub-web](food-hub-output-modified.png)
+
+
+ShopEase website after modification
+
+![shopEase-web](shopEase-modified.png)
